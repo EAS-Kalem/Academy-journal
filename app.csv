@@ -1,0 +1,38 @@
+Question, Answer
+What command do you use to commit using git?, Git commit
+What is a popular package manager used for a mac?, Homebrew
+What does the linux command ls do?, List files in current directory
+What OS is chocolatey used on?, Windows
+What does mkdir do as a linux command?, Make a directory
+What is a docker container?, A isolated enviroment for running an app
+How would you check your node version?, node -v
+What does virtual box software do?, Lets you create a virtual machine
+What is docker?, A platform for building running and shipping containers
+Does linux use forward slashes(/) or back slashes(\)?, Forward
+What does CD linux command do?, Change directory
+What GIT command would you use to create a directory?, Git init
+What is GIT?, A version control system
+How would you add a comment "Hello world!" in a javascript?, //Hello world!
+What is kubernetes used for?, Application deployment
+What is the benifit to using kubernetes?, It automates checks on changes before deployment that would normally need to be performed manualy
+What is a Git hub repository?, A repository is a folder where you can store your project files and all their revision history.
+What are the 4 diffrent types of networks?, LAN PAN MAN WAN
+Linux is not case sensitive (true/false), False
+What is the fastest way to find anything on a MAC?, command + space
+What is an IP address?, An IP address is a number assigned to every device using the internet
+What does REST API stand for?, Representational State Transfer Application Programming Interface
+What are some commands used in postman?, GET POST PUT PATCH DELETE OPTIONS
+What is NPX?, Node package execute
+What is Yellow Dog?, A package manager
+What is a linux command to make HTTP requests?, CURL
+What does CSV in CSV file stand for?, Comma seperated values
+What does the linux | (pipe) operator do?, Sends output of first command to the following command
+React is a scripting language (true/false), False
+What does linux STDOUT refer to?, Standard output
+What is NPM?, Node package manager
+What does the linux SUDO command do?, Executes next command as a root user
+How do you create a new docker image?, Docker build 
+What is node js?, a javascript runtime
+How do you call a javascript function called "myFunction", myFunction()
+
+
