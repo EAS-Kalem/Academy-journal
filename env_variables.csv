@@ -1,0 +1,11 @@
+Use commands read some environment variables -
+    $ env
+
+Use commands to set some environment variables -
+    $ export NAME=kalem
+    $ cat kalem
+
+Create script that sets and uses the environment variables. Make it do something, write them to a file/create some directories etc
+    $ export NAME= kalem
+    $ mkdir project
+     
