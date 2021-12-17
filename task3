@@ -1,0 +1,60 @@
+Task 3 My responsibility - Set up DNS
+
+On this task only the Max and Kaine have an IP address to find the VMs with IPs
+nmap 192.168.1.0/24 -p 22       (Find IPs on the network, found 192.168.1.150)
+     
+ssh user@192.168.1.150          (Get into the first system using ssh)
+    
+
+dnf install dhcp-server         (Install dhcp server on 192.168.1.150 to distribute IPs)
+
+
+vi /etc/dhcp/dhcpd.conf         (Configure DHCP conf files)
+
+systemctl start dhcpd           (Start DHCP file)
+systemctl status dhcpd          (Check status of DHCP)
+    
+
+DHCP server gave all VMs a IP
+    
+ssh user@10.0.0.10          (SSH into our individual VMs using dynamic IP)
+    
+vi /etc/sysconfig/network-script/ifcfg-ens160       (Set IP to static using the network scripts file)
+    
+ifdown ens160 && ifup ens160
+
+dnf install bind bind-utils             (Download packages for DNS)
+    
+systemctl enable named                  (enable the DNS)
+systemctl status named                  (check the status of dns)
+
+vi /etc/named.conf                      (Configure DNS and add .localhost to allow query)
+    
+vi /var/named/easlab.co.uk.db           (Create the forward zone file with hostnames )
+    
+vi /var/named/10.0.0.db                 (Create the reverse zone file with hostnames )
+
+systemctl restart named                 (Restart the DNS)
+systemctl status named                  (Check the status of DNS)
+    
+
+Now the DNS was working and everyone on the network could ping eachother and ping google
+
+Now Max had to run a http server to distribute app.zip files
+
+wget http://max/app3.zip        (Pull app2.zip file onto my system)
+    
+
+unzip app2.zip                    (Unzip zip file to view contents)
+
+vi index.js                         (Check index.js is passing Data correctly)
+    
+
+node index.js &                     (This allows me to run index.js in the background so i could run curl commands and check the chain)
+
+curl http://app1                    (Run a curl command to test that the links are working)
+
+    We configured firewalls to allow port 80 and we were able to run the apps and have them link correctly.
+
+    We could check this by opening a browser window and going to the ingress IP of 192.168.1.150
+    This gave as the status check of each app and linked to the 6th app on Andrews system.
