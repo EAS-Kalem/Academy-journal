@@ -8,4 +8,4 @@ Use commands to set some environment variables -
 Create script that sets and uses the environment variables. Make it do something, write them to a file/create some directories etc
     $ export NAME= kalem
     $ mkdir project
-     
+     .
