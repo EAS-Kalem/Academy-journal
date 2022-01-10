@@ -61,4 +61,27 @@ We then found the pm2 command
     pm2 start app1/index.js
 This allowed us to run app1 in the background and complete the app chain 1-5
 
+
+
+
 We were then asked by rhys to count how many times we needed to interact with the script start to finish and come up with some potential fixes 
+
+There were 22 events where we needed to interact with the script
+
+If i was to try minimize interactions
+
+I would first write a script for the pre-reqs for running the script on the first machine
+ssh root@192.168.1.173
+yes
+password
+cd 2021-linux-scripting
+git pull
+cd ..
+./2021-linux-scripting/master-script.sh
+        This would deal with 7 of our user interactions
+
+I would then store the password in a env variable and call it for each user input for password and put the yes into the script for each new connection the first time it connects and add a curl command at the end of the script to check app status and that the chain is working as intended
+        This would deal with 9 of our user interactions
+
+And for the remaining Ctrl + C user interactions i would ...
+        This would deal with the remaining 6 user interactions
