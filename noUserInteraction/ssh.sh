@@ -1,8 +1,6 @@
-#!/usr/bin/expect -f
-spawn ssh user@192.168.1.173
-expect "password:"
-sleep 1
-send "Renegade187!"
-command1
-command2
-commandN
+#!/bin/bash
+
+
+expect -c "
+        spawn ssh root@192.168.1.173; 
+        expect \"pass*\"; send \"Renegade187!\r\"; interact"
