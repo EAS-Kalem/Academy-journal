@@ -1,0 +1,64 @@
+Task 4 is to automate the process of the previous task with bash scripts.
+
+First we added our config files from the previous task to the repo for dhcp,dns and gateway, this sped up the process of configuration
+My task was the gateway on thois group task so i started running the commands manualy before adding them into my script, everything run well so commited script to the team github repo, i then set the vms back to the initial state ready for script testing.
+While liam finished off the master script i started testing my script individually to avoid issues when running the master.
+Everything seemed to be running correctly with my gateway script.
+
+
+We had some issues with dnf and yum package managers, so had some downtime where we were unable to test downloading and running the services.
+
+We first tested the individual scripts as a team before merging all branches to main the dhcp script had a few typos that needed correcting but after these changes the dhcp run as intended.
+
+We then tested the gateway script as a team
+Made some minor adjustments where needed and the gateway script seemed to work fine. It setup the iptables and suceeded without errors.
+However, we did then notice then when we tried to test one of the other machines they did not seem to be able to access the internet through the gateway so the gateway had an issue we have not yet detected.
+We have confirmed that the systems are having their gateway set to the 10.0.0.1 ip by the dhcp so that is not the issue.
+
+ We decided to take a break from the gateway script test the dns script.
+
+We ran the dns script on kaines vm and got the server up and running correctly.
+
+
+We then run into a problem where the default  search domain was defaulting to easlab.co.uk even though the systems were having the domain search easlab.local set by the dhcp. We used dns ignore to ignore the easlab.co.uk
+this worked well 
+    nmcli con mod "Wired connection 1" ipv4.ignore-auto-dns yes
+    nmcli con down "Wired connection 1"
+    nmcli con up "Wired connection 1"
+        With this in place all systems could now ping using the app hostnames.
+
+We then come back to the gateway issues it seemed the script wasnt running some of the ip table commands, we were not sure which ones or why but running the gateway script twice ensures that all commands are run corrcetly and this resolved the gaeway issue. 
+    
+All system now had access to the internet through the gateway and so the DNS script was able to install the required packages.
+
+"Next we moved on to running the HTTP-Server on max's machine and having each of the other systems pull the apps down and run them, We decided that as the apps would need to be edited anyways it was easier to simply have everyone pull down app1 and just edit the index acordingly. We ran into some errors with the HTTP-Server where the firewalls were blocking the traffic so an exception in the firewall command was added to the script to allow the traffic through. With that in place the script was now able to pull app1 on to each system, unzip it and then edit the index.js with the code required by each app."
+
+However when we tried to run the apps in the background using  "node index.js &" it was runnning in the foreground.
+
+Firstly we tried using "forever"
+    npm install -g forever
+    forever start index.js
+We had issues with forever and decided to look for an alternative fix as the forever command would repeatedly re-run the app over and over again.
+
+We went back to running and testting the apps manually so we could debug the app link errors.
+
+We then made some changes to firewalls on each system
+    firewall-cmd --permanent --add-port=80/tcp
+    firewall-cmd --reload
+    
+    
+Running these commands allowed an acception through the firewall on the port that the apps are using.
+With all apps running manually and each system running this firewall command we tested the apps and found they were now working as intended.
+
+Apps 2-5 could now be run in the background from the scrips but app1 is skipped over regardless of how we attempt to run it in the script.
+If we run app 1 manually then we can confirm that all the apps are working correctly now even when being run from the scrips.
+
+At this point we decided to merge the updated apps scripts calls from the appsTroublshoot script and back into the master.
+We reset the vms back to their initial snapshots and tested the master script in its entirety.
+
+We then found the pm2 command
+    npm install pm2 -g
+    pm2 start app1/index.js
+This allowed us to run app1 in the background and complete the app chain 1-5
+
+We were then asked by rhys to count how many times we needed to interact with the script start to finish and come up with some potential fixes 
