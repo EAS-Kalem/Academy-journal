@@ -1,3 +1,21 @@
-task 5 challenge is to automate the process of the 5 apps and compplete the chain of apps similarly to task 4 but this time using chef
+Task 5 challenge is to automate the process of the 5 apps and complete the chain of apps similarly to task 4 but this time using chef
 
-my responsibility in this task is to set up the dhcp, in task 4 i did gateway, in task 3 i did DNS, in task 2 i did
+11/01/21
+We spent an hour planning for this task setting up our gannt chart to track progress, distributing the workload evenly throughout our team and providing each task realistic start and finish times to give our plan more structure, we also discussed the sub tasks and dependencies on tasks for each of the individual machines so everybody had a clear path with steps from start to finish. [ See "task5_plan(chef)" ]
+
+During planning i decided to put myself forward for master script, in task 4 i did gateway, in task 3 i did DNS, in task 2 i did DHCP so this is the only task i have not done previously.
+
+Given the master script has depenencies like the 3 other machines to be set up before writing and linking them all together i took on a support role at the start of the task assisting harrison with the DNS configuration and testing of the DNS chef script.
+
+12/01/21
+In our plan we decided using a cookbook from the supermarket would be our best bet to simplify the process and give us a comprehensive solution for DNS that can be reused and reconfigured for new systems easily, we started searching and found the "djbdns" DNS cookbook we started working on this one and soon found it would be no good for our system as it wasnt compatible for centOS and hadnt had any changes made for several years meaning it was most likely outdated, we continued serching and found another DNS that looked like a good fit for our systems, harrison continued with configuration and attempted to test but had trouble running the script.
+
+13/01/21 
+Harrison had a meeting first thing this morning so we put DNS on pause for a while until harrison returned, gateway and dhcp continued with setting up their scripts, i did some work on my master script in preperation for the 
+
+
+
+
+
+
+
