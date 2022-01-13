@@ -11,7 +11,9 @@ Given the master script has depenencies like the 3 other machines to be set up b
 In our plan we decided using a cookbook from the supermarket would be our best bet to simplify the process and give us a comprehensive solution for DNS that can be reused and reconfigured for new systems easily, we started searching and found the "djbdns" DNS cookbook we started working on this one and soon found it would be no good for our system as it wasnt compatible for centOS and hadnt had any changes made for several years meaning it was most likely outdated, we continued serching and found another DNS that looked like a good fit for our systems, harrison continued with configuration and attempted to test but had trouble running the script.
 
 13/01/21 
-Harrison had a meeting first thing this morning so we put DNS on pause for a while until harrison returned, gateway and dhcp continued with setting up their scripts, i did some work on my master script in preperation for the 
+Harrison had a meeting first thing this morning so i put DNS on pause for a while until harrison returned, gateway and dhcp continued with setting up their scripts while i did some work on my master script in preperation for the others to finish with their scripts.
+
+When harrison retured we continued to work on configuring the DNS by populating the named.conf, forward and reverse zones. After trying a few different techniques i found files in our supermarket bind cookbook that populated these 3 files with a template, i removed the template and added the the full config to thes files and tested the script once again, this worked as intended but although it worked this isnt the ideal setup for something like this and should be more dynamic. Tommorow i will look into using individual keys to set values for each option and do all of our configuration in one file so it could be quickly configured and used again in a diffrent situation.
 
 
 
