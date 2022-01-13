@@ -1,0 +1,40 @@
+Task 1
+Cat resolv.conf					(Check IP)
+Vi resolv.conf						(Set static IP)
+VI /etc/hosts 						(Set host names)
+
+Hosts file
+10.0.0.1 Max
+10.0.0.2 Harrison
+10.0.0.3 Liam
+10.0.0.4 Kalem
+Max VM had all the zip files we needed so max run the commands:
+			find / -name app*zip   				(Find ZIPs)
+			http server 						(Set up http server)
+
+Curl https://max/app3.zip                 (Get request for app3.zip from Max)              
+Unzip app3.zip 				     (Unzip app3.zip)
+Cd /app3/ 					    (Change directory to app3)
+Ls  							    (View files and directories inside app3)
+Vi  index.js					   (Edit index.js file and change port to 80)
+
+Index.js file
+Const express = require(‘express’);
+const axis = require(‘axios’);
+Const app = express();
+
+app.get(‘/‘, async (req, res) => {
+    	try{
+        		const {data} = await axios.get(‘http://harrison')
+                		res.send([…data, ‘app 4 status: OK’])
+                          	} catch (error) {
+                    		console.log(error.message)
+                            		res.send([‘app 4 status: OK’])
+	        }
+            })
+
+Node index.js 
+
+Curl max
+Output - App 1 ‘OK’, App 2 ‘OK’, App 2 ‘OK’, App 4 ‘OK’, App 5 ‘OK’
+
