@@ -1,19 +1,51 @@
 Task 5 challenge is to automate the process of the 5 apps and complete the chain of apps similarly to task 4 but this time using chef
 
-11/01/21
-We spent an hour planning for this task setting up our gannt chart to track progress, distributing the workload evenly throughout our team and providing each task realistic start and finish times to give our plan more structure, we also discussed the sub tasks and dependencies on tasks for each of the individual machines so everybody had a clear path with steps from start to finish. [ See "task5_plan(chef)" ]
+We spent an hour planning for this task setting up our gannt chart to track progress, distributing the 
+workload evenly throughout our team and providing each task realistic start and finish times to give our 
+plan more structure, we also discussed the sub tasks and dependencies on tasks for each of the individual
+ machines so everybody had a clear path with steps from start to finish. [ See "task5_plan(chef)" ]
 
-During planning i decided to put myself forward for master script, in task 4 i did gateway, in task 3 i did DNS, in task 2 i did DHCP so this is the only task i have not done previously.
+During planning i decided to put myself forward for master script, in task 4 i did gateway, in task 3 i did 
+DNS, in task 2 i did DHCP so this is the only task i have not done previously.
 
-Given the master script has depenencies like the 3 other machines to be set up before writing and linking them all together i took on a support role at the start of the task assisting harrison with the DNS configuration and testing of the DNS chef script.
+Given the master script has depenencies like the 3 other machines to be set up before writing and linking 
+them all together i took on a support role at the start of the task assisting harrison with the DNS 
+configuration and testing of the DNS chef script.
 
-12/01/21
-In our plan we decided using a cookbook from the supermarket would be our best bet to simplify the process and give us a comprehensive solution for DNS that can be reused and reconfigured for new systems easily, we started searching and found the "djbdns" DNS cookbook we started working on this one and soon found it would be no good for our system as it wasnt compatible for centOS and hadnt had any changes made for several years meaning it was most likely outdated, we continued serching and found another DNS that looked like a good fit for our systems, harrison continued with configuration and attempted to test but had trouble running the script.
+In our plan we decided using a cookbook from the supermarket would be our best bet to simplify the process 
+and give us a comprehensive solution for DNS that can be reused and reconfigured for new systems easily, we 
+started searching and found the "djbdns" DNS cookbook we started working on this one and soon found it would 
+be no good for our system as it wasnt compatible for centOS and hadnt had any changes made for several years
+meaning it was most likely outdated, we continued serching and found another DNS that looked like a good fit 
+for our systems, harrison continued with configuration and attempted to test but had trouble running the 
+script.
 
-13/01/21 
-Harrison had a meeting first thing this morning so i put DNS on pause for a while until harrison returned, gateway and dhcp continued with setting up their scripts while i did some work on my master script in preperation for the others to finish with their scripts.
+Harrison had a meeting first thing this morning so i put DNS on pause for a while until harrison returned, 
+gateway and dhcp continued with setting up their scripts while i did some work on my master script in 
+preperation for the others to finish with their scripts.
 
-When harrison retured we continued to work on configuring the DNS by populating the named.conf, forward and reverse zones. After trying a few different techniques i found files in our supermarket bind cookbook that populated these 3 files with a template, i removed the template and added the the full config to thes files and tested the script once again, this worked as intended but although it worked this isnt the ideal setup for something like this and should be more dynamic. Tommorow i will look into using individual keys to set values for each option and do all of our configuration in one file so it could be quickly configured and used again in a diffrent situation.
+When harrison retured we continued to work on configuring the DNS by populating the named.conf, forward and 
+reverse zones. After trying a few different techniques i found files in our supermarket bind cookbook that 
+populated these 3 files with a template, i removed the template and added the the full config to thes files
+and tested the script once again, this worked as intended but although it worked this isnt the ideal setup 
+for something like this and should be more dynamic. Tommorow i will look into using individual keys to set 
+values for each option and do all of our configuration in one file so it could be quickly configured and 
+used again in a diffrent situation.
+
+We made changes to the script and got it set up so all our configuration 
+was being done in one file and passed into our bind cookbok with default.rb file, we spent some time 
+debugging small issues with the script to get it to run correctly and it was pinging other apps on the 
+network but not using the .local so we made alterations to the script so our DNS prioritised our easlab.
+local instead of the easlab.co.uk it was defaulting to local.
+
+We then ran into some issues with the other VMs not using my DNS after some investigation we discovered it 
+was a dhcp issue, resolved that to continue testing, we then found the dhcp wasnt setting its own dns server
+and search domain so we found a network interface cookbook and configured it to use the correct DNS and
+Domain.
+
+We then had an issue with our DNF install command for IP tables so couldnt do any more testing until DNF package manager went back online.
+
+
 
 
 
