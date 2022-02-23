@@ -1,0 +1,37 @@
+h1 {
+    font-size: 40px;
+    margin: 20px;
+}
+
+p {
+    font-size: 20px;
+    
+}
+
+#priceDiv {
+    margin: 20px;
+}
+#filterDiv {
+    outline: 2px solid blue;
+    margin: 20px;
+}
+
+#carList img {
+    width: 460px;
+    height: 260px;
+    margin: 20px;
+}
+
+#carList {
+    flex: auto;
+    margin-left: 20px;
+    outline: 2px black;
+    margin: 20px;
+}
+
+#carList #iDiv{
+    flex: auto;
+    margin-left: 20px;
+    outline: 2px black;
+    margin: 20px;
+}

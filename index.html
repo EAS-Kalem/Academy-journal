@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Car Lookup</title>
+    
+</head>
+<body>
+    <h1>Car-Trader</h1>
+    <div id='filterDiv'>
+    <p>Filter your results</p>
+    
+        <label for="cars">Price:</label>
+    <select id="option1">
+        <option value="0">0</option>
+        <option value="BMW">BMW</option>
+        <option value="Porsche">Porsche</option>
+        <option value="Audi">Audi</option>
+        <option value="Nissan">Nissan</option>
+    </select>
+<br>
+
+
+<button id='confirm' onclick="listItem()">Search</button>
+<button id="array" onclick="createArray()">array</button>
+    </div>
+
+<div 
+id="carList"
+style="width: 250px; height: 150px;"
+></div>
+<script src="app.js"></script>
+</body>
+</html>
